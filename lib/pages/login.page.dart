@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pusyantek/pages/home.page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,8 +68,23 @@ class _LoginState extends State<Login> {
                   minWidth: double.infinity,
                   height: 65,
                   child: RaisedButton(
-                    child: Text('Log In'),
-                    onPressed: () {},
+                    child: _isLoading
+                        ? CircularProgressIndicator(
+                            backgroundColor: Colors.white)
+                        : Text('Log In'),
+                    onPressed: () async {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      Future.delayed(Duration(seconds: 5)).then((_) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      });
+                    },
                   ),
                 ),
                 SizedBox(height: 80),

@@ -8,6 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'pusyantekbppt',
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+      ),
       home: Login(),
     );
   }
