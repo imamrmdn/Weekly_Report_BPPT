@@ -76,7 +76,7 @@ class _LoginState extends State<Login> {
                       setState(() {
                         _isLoading = true;
                       });
-                      Future.delayed(Duration(seconds: 5)).then((_) {
+                      Future.delayed(Duration(seconds: 2)).then((_) {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
