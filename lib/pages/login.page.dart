@@ -71,7 +71,7 @@ class _LoginState extends State<Login> {
                     child: _isLoading
                         ? CircularProgressIndicator(
                             backgroundColor: Colors.white)
-                        : Text('Log In'),
+                        : Text('Sig In'),
                     onPressed: () async {
                       setState(() {
                         _isLoading = true;
@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                     },
                   ),
                 ),
-                SizedBox(height: 80),
+                SizedBox(height: 100),
                 Text('Version 0.0.1'),
               ],
             ),

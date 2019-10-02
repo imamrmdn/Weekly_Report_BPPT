@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class ListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Categories'),
+      child: Text('List'),
     );
   }
 }

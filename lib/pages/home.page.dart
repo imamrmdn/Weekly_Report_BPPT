@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pusyantek/pages/dashboard.page.dart';
-import 'package:pusyantek/pages/categories.page.dart';
+import 'package:pusyantek/pages/list.page.dart';
+import 'package:pusyantek/pages/pemasyarakatan.page.dart';
+import 'package:pusyantek/pages/perencanaan.page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,10 +18,19 @@ class _HomePageState extends State<HomePage> {
       'title': 'Dashboard',
     },
     {
-      'page': CategoriesScreen(),
+      'page': PerencanaanScreen(),
       'title': 'Kasub',
     },
+    {
+      'page': PemasyarakatanScreen(),
+      'title': 'Kasub',
+    },
+    {
+      'page': ListScreen(),
+      'title': 'List Kegiatan',
+    },
   ];
+
   int _selectedPageIndex = 0;
 
   void _selectPage(int index) {
@@ -50,8 +61,18 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.category),
-            title: Text('categories'),
+            icon: Icon(Icons.description),
+            title: Text('perencanaan'),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.supervisor_account),
+            title: Text('pemasyarakatan'),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.list),
+            title: Text('list'),
           ),
         ],
       ),
