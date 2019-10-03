@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:pusyantek/pages/home.page.dart';
 import 'package:pusyantek/pages/register.page.dart';
+import 'package:pusyantek/provider/auth.provider.dart';
 
 class LoginPage extends StatefulWidget {
   static final routeName = '/login';
@@ -11,7 +13,28 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginPage> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   var _isLoading = false;
+
+  handleOnSubmit() async {
+    try {
+      setState(() => _isLoading = true);
+      await Provider.of<Auth>(context)
+          .login(_emailController.text, _passwordController.text);
+      Navigator.of(context).pushReplacementNamed(HomePage.routeName);
+    } catch (error) {
+      print(error);
+      setState(() => _isLoading = false);
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +48,7 @@ class _LoginState extends State<LoginPage> {
                 Image.asset('assets/Pusyantek1.png'),
                 SizedBox(height: 40),
                 TextFormField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -43,6 +67,7 @@ class _LoginState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  controller: _passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -74,19 +99,7 @@ class _LoginState extends State<LoginPage> {
                         ? CircularProgressIndicator(
                             backgroundColor: Colors.white)
                         : Text('Sign In'),
-                    onPressed: () async {
-                      setState(() {
-                        _isLoading = true;
-                      });
-                      Future.delayed(Duration(seconds: 2)).then((_) {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(),
-                          ),
-                        );
-                      });
-                    },
+                    onPressed: handleOnSubmit,
                   ),
                 ),
                 SizedBox(

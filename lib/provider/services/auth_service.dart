@@ -4,7 +4,7 @@ import 'package:pusyantek/utils/api.dart';
 class AuthService {
   Future<String> login(String email, String password) async {
     try {
-      final response = await api.post('/api/login', data: {
+      final response = await api.post('/api/user/login', data: {
         'email': email,
         'password': password,
       });
