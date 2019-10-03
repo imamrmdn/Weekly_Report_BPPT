@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pusyantek/pages/home.page.dart';
 
-class Login extends StatefulWidget {
+class LoginPage extends StatefulWidget {
+  static final routeName = '/login';
   @override
   State<StatefulWidget> createState() {
     return _LoginState();
   }
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<LoginPage> {
   var _isLoading = false;
 
   @override

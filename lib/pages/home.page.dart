@@ -5,6 +5,8 @@ import 'package:pusyantek/pages/pemasyarakatan.page.dart';
 import 'package:pusyantek/pages/perencanaan.page.dart';
 
 class HomePage extends StatefulWidget {
+  static final routeName = '/home';
+
   @override
   State<StatefulWidget> createState() {
     return _HomePageState();
