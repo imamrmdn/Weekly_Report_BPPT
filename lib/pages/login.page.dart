@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pusyantek/pages/home.page.dart';
+import 'package:pusyantek/pages/register.page.dart';
 
 class LoginPage extends StatefulWidget {
   static final routeName = '/login';
@@ -72,7 +73,7 @@ class _LoginState extends State<LoginPage> {
                     child: _isLoading
                         ? CircularProgressIndicator(
                             backgroundColor: Colors.white)
-                        : Text('Sig In'),
+                        : Text('Sign In'),
                     onPressed: () async {
                       setState(() {
                         _isLoading = true;
@@ -87,6 +88,27 @@ class _LoginState extends State<LoginPage> {
                       });
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Do not have an account?'),
+                    SizedBox(width: 5),
+                    InkWell(
+                      child: Text(
+                        'Register here',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(RegisterPage.routeName),
+                    )
+                  ],
                 ),
                 SizedBox(height: 100),
                 Text('Version 0.0.1'),
