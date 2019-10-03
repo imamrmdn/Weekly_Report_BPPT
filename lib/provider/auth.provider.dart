@@ -47,8 +47,11 @@ class Auth with ChangeNotifier {
   }
 
   Future<void> initializing() async {
-    try {} catch (error) {
-      throw error;
+    final jwt = await _jwtService.getFromSharedPreferences();
+    if (jwt != null) {
+      Api.setDefaultAuthHeader(jwt);
+      _isAuthenticated = true;
+      notifyListeners();
     }
   }
 }

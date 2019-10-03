@@ -76,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       SizedBox(height: 20),
                       TextFormField(
+                        controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -95,6 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       SizedBox(height: 20),
                       TextFormField(
+                        controller: _nameController,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
