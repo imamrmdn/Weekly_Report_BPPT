@@ -9,6 +9,7 @@ class KasubScreen extends StatefulWidget {
 }
 
 class _KasubScreenState extends State<KasubScreen> {
+  //var _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +56,21 @@ class _KasubScreenState extends State<KasubScreen> {
                 maxLines: 3,
                 keyboardType: TextInputType.multiline,
               ),
+              SizedBox(height: 20),
+              // ButtonTheme(
+              //   splashColor: Colors.tealAccent,
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(10)),
+              //   textTheme: ButtonTextTheme.primary,
+              //   buttonColor: Colors.teal,
+              //   minWidth: double.infinity,
+              //   height: 65,
+              //   child: RaisedButton(
+              //     child: _isLoading
+              //         ? CircularProgressIndicator(backgroundColor: Colors.white)
+              //         : Text('Simpan'),
+              //   ),
+              // ),
             ],
           ),
         ),
