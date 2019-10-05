@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pusyantek/pages/dashboard.page.dart';
 import 'package:pusyantek/pages/list.page.dart';
-import 'package:pusyantek/pages/pemasyarakatan.page.dart';
-import 'package:pusyantek/pages/perencanaan.page.dart';
+import 'package:pusyantek/pages/kasub.page.dart';
 
 class HomePage extends StatefulWidget {
   static final routeName = '/home';
@@ -20,11 +19,7 @@ class _HomePageState extends State<HomePage> {
       'title': 'Dashboard',
     },
     {
-      'page': PerencanaanScreen(),
-      'title': 'Kasub',
-    },
-    {
-      'page': PemasyarakatanScreen(),
+      'page': KasubScreen(),
       'title': 'Kasub',
     },
     {
@@ -63,18 +58,18 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.description),
-            title: Text('perencanaan'),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.supervisor_account),
-            title: Text('pemasyarakatan'),
+            title: Text('Kasub'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.list),
             title: Text('list'),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.input),
+            title: Text('Logout'),
           ),
         ],
       ),
