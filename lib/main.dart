@@ -4,6 +4,7 @@ import 'package:pusyantek/pages/home.page.dart';
 import 'package:pusyantek/pages/login.page.dart';
 import 'package:pusyantek/pages/register.page.dart';
 import 'package:pusyantek/provider/auth.provider.dart';
+import 'package:pusyantek/provider/kasub.provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: Auth(),
+        ),
+        ChangeNotifierProvider.value(
+          value: KasubProvider(),
         )
       ],
       child: Consumer<Auth>(

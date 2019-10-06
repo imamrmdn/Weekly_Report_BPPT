@@ -22,6 +22,7 @@ class KasubProvider with ChangeNotifier {
     try {
       final kasub = await _kasubService.create(data);
       _kasubs = [kasub, ..._kasubs];
+      print(kasub);
       notifyListeners();
     } catch (error) {
       throw error;

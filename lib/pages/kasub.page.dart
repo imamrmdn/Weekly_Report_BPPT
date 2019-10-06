@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dropdownfield/dropdownfield.dart';
+import 'package:provider/provider.dart';
+import 'package:pusyantek/provider/kasub.provider.dart';
 
 class KasubScreen extends StatefulWidget {
   @override
@@ -48,6 +50,7 @@ class _KasubScreenState extends State<KasubScreen> {
   var timTeknisInput = 'PTA';
   var kasupInput = 'Perencanaan';
   var statusInput = "Pembahasan Awal";
+  var isLoading = false;
   final kasupList = ['Perencanaan', 'Pemasyarakatan'];
   final statusList = [
     "Pembahasan Awal",
@@ -60,7 +63,26 @@ class _KasubScreenState extends State<KasubScreen> {
   final mitraFocusNode = FocusNode();
   final nilaiFocusNode = FocusNode();
 
-  handleOnSave() async {}
+  handleOnSave() async {
+    try {
+      setState(() => isLoading = true);
+      final data = {
+        'kategori': kasupInput,
+        'kegiatan': kegiatanController.text,
+        'mitra': mitraController.text,
+        'tim_teknis': timTeknisInput,
+        'nilai': int.parse(nilaiController.text),
+        'status': statusInput,
+        'keterangan': keteranganController.text,
+      };
+
+      await Provider.of<KasubProvider>(context).create(data);
+      setState(() => isLoading = false);
+    } catch (error) {
+      print(error.response);
+      setState(() => isLoading = false);
+    }
+  }
 
   @override
   void dispose() {
@@ -195,7 +217,9 @@ class _KasubScreenState extends State<KasubScreen> {
                 minWidth: double.infinity,
                 height: 65,
                 child: RaisedButton(
-                  child: Text('Simpan'),
+                  child: isLoading
+                      ? CircularProgressIndicator(backgroundColor: Colors.white)
+                      : Text('Sign In'),
                   onPressed: handleOnSave,
                 ),
               ),
