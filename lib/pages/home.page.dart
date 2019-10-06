@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:pusyantek/pages/dashboard.page.dart';
 import 'package:pusyantek/pages/list.page.dart';
 import 'package:pusyantek/pages/kasub.page.dart';
+import 'package:pusyantek/provider/auth.provider.dart';
 
 class HomePage extends StatefulWidget {
   static final routeName = '/home';
@@ -30,7 +32,12 @@ class _HomePageState extends State<HomePage> {
 
   int _selectedPageIndex = 0;
 
-  void _selectPage(int index) {
+  Future<void> _selectPage(int index) async {
+    if (index == 3) {
+      await Provider.of<Auth>(context).logout();
+      Navigator.of(context).pushReplacementNamed("/login");
+    }
+
     setState(() {
       _selectedPageIndex = index;
     });
