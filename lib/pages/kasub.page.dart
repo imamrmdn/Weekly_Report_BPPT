@@ -9,6 +9,71 @@ class KasubScreen extends StatefulWidget {
 }
 
 class _KasubScreenState extends State<KasubScreen> {
+  final List<String> listTimTeknis = [
+    "PTA",
+    "PTB",
+    "PTFM",
+    "PTE",
+    "PTSEIK",
+    "PTA",
+    "PTPP",
+    "PTKSSI",
+    "PPIPE",
+    "PPIMTE",
+    "PSAT",
+    "PTIP",
+    "PTSPT",
+    "PTIk",
+    "BJIK",
+    "BTP",
+    "BBTKE",
+    "BTMPPO",
+    "BTMP",
+    "BTH",
+    "BIT",
+    "BTIKK",
+    "BTIPDP",
+    "BTSK",
+    "BBTMC",
+    "BBTA3",
+    "BBTKS",
+    "BB",
+    "BTBBRD"
+  ];
+  final formKey = GlobalKey<FormState>();
+  final kegiatanController = TextEditingController();
+  final mitraController = TextEditingController();
+  final nilaiController = TextEditingController();
+  final keteranganController = TextEditingController();
+  var timTeknisInput = 'PTA';
+  var kasupInput = 'Perencanaan';
+  var statusInput = "Pembahasan Awal";
+  final kasupList = ['Perencanaan', 'Pemasyarakatan'];
+  final statusList = [
+    "Pembahasan Awal",
+    "Penawaran",
+    "Diskusi / Negosiasi",
+    "Proses Kontrak",
+    "Kontrak"
+  ];
+  final kegiatanFocusNode = FocusNode();
+  final mitraFocusNode = FocusNode();
+  final nilaiFocusNode = FocusNode();
+
+  handleOnSave() async {}
+
+  @override
+  void dispose() {
+    kegiatanController.dispose();
+    mitraController.dispose();
+    nilaiController.dispose();
+    keteranganController.dispose();
+    kegiatanFocusNode.dispose();
+    mitraFocusNode.dispose();
+    nilaiFocusNode.dispose();
+    super.dispose();
+  }
+
   //var _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -16,61 +81,124 @@ class _KasubScreenState extends State<KasubScreen> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
+          key: formKey,
           child: ListView(
             children: <Widget>[
-              DropDownField(
-                //value: ,
-                required: true,
-                labelText: 'Kasub',
-                //item: ,
-                //setter: (),
+              Text(
+                'Kepala Sub Bidang',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+              Column(
+                children: [
+                  Wrap(
+                    // alignment: WrapAlignment.end,
+                    crossAxisAlignment: WrapCrossAlignment.start,
+                    children: List<Widget>.generate(
+                      kasupList.length,
+                      (int index) => Container(
+                        margin: EdgeInsets.symmetric(horizontal: 3),
+                        child: ChoiceChip(
+                          selectedColor: Theme.of(context).primaryColor,
+                          backgroundColor: Colors.grey,
+                          labelStyle: TextStyle(color: Colors.white),
+                          label: Text(kasupList[index]),
+                          selected: kasupInput == kasupList[index],
+                          onSelected: (bool selected) {
+                            setState(() => kasupInput = kasupList[index]);
+                            kegiatanFocusNode.requestFocus();
+                          },
+                        ),
+                      ),
+                    ).toList(),
+                  ),
+                ],
               ),
               TextFormField(
+                controller: kegiatanController,
                 decoration: InputDecoration(labelText: 'Kegiatan'),
                 textInputAction: TextInputAction.next,
+                focusNode: kegiatanFocusNode,
+                onFieldSubmitted: (_) => mitraFocusNode.requestFocus(),
               ),
               TextFormField(
+                controller: mitraController,
                 decoration: InputDecoration(labelText: 'Mitra'),
                 textInputAction: TextInputAction.next,
+                focusNode: mitraFocusNode,
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              DropDownField(
+                value: timTeknisInput,
+                required: true,
+                labelText: 'Tim Teknis',
+                items: listTimTeknis,
+                strict: false,
+                setter: (dynamic newValue) {
+                  setState(() => timTeknisInput = newValue);
+                  nilaiFocusNode.requestFocus();
+                },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Tim Teknis'),
-                textInputAction: TextInputAction.next,
-              ),
-              TextFormField(
+                controller: nilaiController,
                 decoration: InputDecoration(labelText: 'Nilai'),
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.number,
+                focusNode: nilaiFocusNode,
               ),
               SizedBox(height: 20),
-              DropDownField(
-                //value: ,
-                required: true,
-                labelText: 'Status',
-                //item: ,
-                //setter: (),
+              Text(
+                'Status',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+              Column(
+                children: [
+                  Wrap(
+                    children: List<Widget>.generate(
+                      statusList.length,
+                      (int index) => Container(
+                        margin: EdgeInsets.symmetric(horizontal: 3),
+                        child: ChoiceChip(
+                          selectedColor: Theme.of(context).primaryColor,
+                          backgroundColor: Colors.grey,
+                          labelStyle: TextStyle(color: Colors.white),
+                          label: Text(statusList[index]),
+                          selected: statusInput == statusList[index],
+                          onSelected: (bool selected) {
+                            setState(() => statusInput = statusList[index]);
+                          },
+                        ),
+                      ),
+                    ).toList(),
+                  ),
+                ],
               ),
               TextFormField(
+                controller: keteranganController,
                 decoration: InputDecoration(labelText: 'Keterangan'),
                 textInputAction: TextInputAction.next,
                 maxLines: 3,
                 keyboardType: TextInputType.multiline,
               ),
               SizedBox(height: 20),
-              // ButtonTheme(
-              //   splashColor: Colors.tealAccent,
-              //   shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(10)),
-              //   textTheme: ButtonTextTheme.primary,
-              //   buttonColor: Colors.teal,
-              //   minWidth: double.infinity,
-              //   height: 65,
-              //   child: RaisedButton(
-              //     child: _isLoading
-              //         ? CircularProgressIndicator(backgroundColor: Colors.white)
-              //         : Text('Simpan'),
-              //   ),
-              // ),
+              ButtonTheme(
+                splashColor: Colors.tealAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                textTheme: ButtonTextTheme.primary,
+                buttonColor: Colors.teal,
+                minWidth: double.infinity,
+                height: 65,
+                child: RaisedButton(
+                  child: Text('Simpan'),
+                  onPressed: handleOnSave,
+                ),
+              ),
             ],
           ),
         ),
