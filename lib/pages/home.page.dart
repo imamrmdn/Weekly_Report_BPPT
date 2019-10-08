@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'page': KasubScreen(),
-      'title': 'Kasub',
+      'title': 'Kasubid',
     },
     {
       'page': ListScreen(),
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.supervisor_account),
-            title: Text('Kasub'),
+            title: Text('Kasubid'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
