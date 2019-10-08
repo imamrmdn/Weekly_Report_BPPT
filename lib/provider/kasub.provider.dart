@@ -25,7 +25,7 @@ class KasubProvider with ChangeNotifier {
       print(kasub);
       notifyListeners();
     } catch (error) {
-      throw error;
+      throw ('Data tidak boleh kosong');
     }
   }
 }

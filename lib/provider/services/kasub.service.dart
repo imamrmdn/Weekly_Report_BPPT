@@ -18,7 +18,7 @@ class KasubService {
       final response = await api.post('/api/kasub', data: data);
       return Kasub.fromJson(response.data);
     } catch (error) {
-      throw error;
+      throw ('Data tidak boleh kosong');
     }
   }
 }

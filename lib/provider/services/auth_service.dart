@@ -10,7 +10,7 @@ class AuthService {
       });
       return response.data['accessToken'];
     } catch (error) {
-      throw error;
+      throw ('Data Tidak Boleh Kosong dan Salah');
     }
   }
 

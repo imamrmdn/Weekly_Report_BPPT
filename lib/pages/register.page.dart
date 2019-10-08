@@ -57,6 +57,25 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(
                     children: <Widget>[
                       TextFormField(
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.teal,
+                              width: 2,
+                            ),
+                          ),
+                          labelText: 'Nama',
+                          hintText: 'Masukan Nama',
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.black,
+                          ),
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -89,25 +108,6 @@ class _RegisterPageState extends State<RegisterPage> {
                           hintText: 'Masukan Password',
                           prefixIcon: Icon(
                             Icons.lock,
-                            color: Colors.black,
-                          ),
-                          border: OutlineInputBorder(),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      TextFormField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.teal,
-                              width: 2,
-                            ),
-                          ),
-                          labelText: 'Nama',
-                          hintText: 'Masukan Nama',
-                          prefixIcon: Icon(
-                            Icons.person,
                             color: Colors.black,
                           ),
                           border: OutlineInputBorder(),

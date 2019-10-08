@@ -48,10 +48,10 @@ class _KasubScreenState extends State<KasubScreen> {
   final nilaiController = TextEditingController();
   final keteranganController = TextEditingController();
   var timTeknisInput = 'PTA';
-  var kasupInput = 'Perencanaan';
+  var kasubInput = 'Perencanaan';
   var statusInput = "Pembahasan Awal";
   var isLoading = false;
-  final kasupList = ['Perencanaan', 'Pemasyarakatan'];
+  final kasubList = ['Perencanaan', 'Pemasyarakatan'];
   final statusList = [
     "Pembahasan Awal",
     "Penawaran",
@@ -62,12 +62,13 @@ class _KasubScreenState extends State<KasubScreen> {
   final kegiatanFocusNode = FocusNode();
   final mitraFocusNode = FocusNode();
   final nilaiFocusNode = FocusNode();
+  final keteranganFocusNode = FocusNode();
 
   handleOnSave() async {
     try {
       setState(() => isLoading = true);
       final data = {
-        'kategori': kasupInput,
+        'kategori': kasubInput,
         'kegiatan': kegiatanController.text,
         'mitra': mitraController.text,
         'tim_teknis': timTeknisInput,
@@ -116,19 +117,19 @@ class _KasubScreenState extends State<KasubScreen> {
                 children: [
                   Wrap(
                     // alignment: WrapAlignment.end,
-                    crossAxisAlignment: WrapCrossAlignment.start,
+                    //crossAxisAlignment: WrapCrossAlignment.start,
                     children: List<Widget>.generate(
-                      kasupList.length,
+                      kasubList.length,
                       (int index) => Container(
                         margin: EdgeInsets.symmetric(horizontal: 3),
                         child: ChoiceChip(
                           selectedColor: Theme.of(context).primaryColor,
                           backgroundColor: Colors.grey,
                           labelStyle: TextStyle(color: Colors.white),
-                          label: Text(kasupList[index]),
-                          selected: kasupInput == kasupList[index],
+                          label: Text(kasubList[index]),
+                          selected: kasubInput == kasubList[index],
                           onSelected: (bool selected) {
-                            setState(() => kasupInput = kasupList[index]);
+                            setState(() => kasubInput = kasubList[index]);
                             kegiatanFocusNode.requestFocus();
                           },
                         ),
@@ -193,6 +194,7 @@ class _KasubScreenState extends State<KasubScreen> {
                           selected: statusInput == statusList[index],
                           onSelected: (bool selected) {
                             setState(() => statusInput = statusList[index]);
+                            keteranganFocusNode.requestFocus();
                           },
                         ),
                       ),
@@ -204,6 +206,7 @@ class _KasubScreenState extends State<KasubScreen> {
                 controller: keteranganController,
                 decoration: InputDecoration(labelText: 'Keterangan'),
                 textInputAction: TextInputAction.next,
+                focusNode: keteranganFocusNode,
                 maxLines: 3,
                 keyboardType: TextInputType.multiline,
               ),
@@ -219,7 +222,7 @@ class _KasubScreenState extends State<KasubScreen> {
                 child: RaisedButton(
                   child: isLoading
                       ? CircularProgressIndicator(backgroundColor: Colors.white)
-                      : Text('Sign In'),
+                      : Text('Simpan'),
                   onPressed: handleOnSave,
                 ),
               ),
