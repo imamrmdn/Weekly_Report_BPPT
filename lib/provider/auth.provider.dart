@@ -23,7 +23,7 @@ class Auth with ChangeNotifier {
       _isAuthenticated = true;
       notifyListeners();
     } catch (error) {
-      throw ('data harus diisi');
+      throw ('data yang anda masukan salah');
     }
   }
 
