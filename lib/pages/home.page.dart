@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     },
     {
       'page': ListScreen(),
-      'title': 'List Kegiatan',
+      'title': 'List Kasubid',
     },
   ];
 
@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.home),
-            title: Text('home'),
+            title: Text('Home'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.list),
-            title: Text('list'),
+            title: Text('List Kasubid'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
