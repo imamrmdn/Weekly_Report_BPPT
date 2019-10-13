@@ -94,9 +94,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Text('Status Jumlah'),
                 padding: EdgeInsets.all(90.0),
                 decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(40)),
+                  shape: BoxShape.rectangle,
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(40),
+                  //sgradient: LinearGradient(),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 20.0,
+                      spreadRadius: 5.0,
+                      offset: Offset(
+                        10.0,
+                        10.0,
+                      ),
+                    )
+                  ],
+                ),
                 width: 500,
                 height: 300,
               ),
