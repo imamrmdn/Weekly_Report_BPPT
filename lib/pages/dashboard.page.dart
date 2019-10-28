@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:pusyantek/widgets/kasub.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  var initializing = true;
+
   @override
   Widget build(BuildContext context) {
     var data1 = [
@@ -73,6 +76,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       barRendererDecorator: charts.BarLabelDecorator<String>(),
       domainAxis: charts.OrdinalAxisSpec(renderSpec: charts.NoneRenderSpec()),
     );
+
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -90,29 +94,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                child: Text('Status Jumlah'),
-                padding: EdgeInsets.all(90.0),
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(40),
-                  //sgradient: LinearGradient(),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      blurRadius: 20.0,
-                      spreadRadius: 5.0,
-                      offset: Offset(
-                        10.0,
-                        10.0,
-                      ),
-                    )
-                  ],
-                ),
-                width: 500,
-                height: 300,
-              ),
+              KasubStatus(),
               SizedBox(
                 height: 20,
               ),
